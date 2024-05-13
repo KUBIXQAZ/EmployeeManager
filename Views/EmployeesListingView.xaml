@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="EmployeeManager.Views.EmployeesListingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EmployeeManager.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Employees Listing"
+                       Style="{StaticResource Header}"
+                       Grid.Column="0"/>
+            <Button Grid.Column="1"
+                    Command="{Binding GoToAddEmployeeCommand}"
+                    Content="Add Employee"/>
+        </Grid>
+        <ListView Grid.Row="1"
+                  Margin="0 20 0 0"
+                  ItemsSource="{Binding Employees}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Surname}" Header="Surname"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="Email"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Phone}" Header="Phone"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Pesel}" Header="Pesel"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
